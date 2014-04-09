@@ -1,0 +1,62 @@
+= The Hello Ruby World
+
+Yesterday a friend of mine, https://twitter.com/tilljoel[@tilljoel], asked me about how to get started with http://neo4j.org[Neo4j] in ruby - so here is a small step-by-step guide to get the usual "Hello World" going.
+
+Firstly, I like to use Cypher as a query language and want to install the Neoj4 server as standard as possible on my OSX, via brew, and open the web interface in the browser for comfort:
+
+[source, bash]
+----
+brew install neo4j && neo4j start
+open http://localhost:7474/
+----
+
+Secondly, just make a new directory for the project with a file `hello.rb` for our script. We are going to use Max DeMarzi's nice https://github.com/maxdemarzi/neography[Neography] library, currently probably the best maintained Neo4j driver for Ruby.
+
+[source,bash]
+----
+mkdir ruby_hello_world && cd ruby_hello_world
+gem install 'neography'
+touch hello.rb
+----
+
+I am only using http://docs.neo4j.org/refcard/2.0/[Cypher] to interact with neo4j, so the interface becomes very uniform in parsing the underlying REST responses - basically arrays of data coming back from Neo4j.
+Now, `hello.rb` looks something like this:
+
+[source, ruby]
+----
+require 'rubygems'
+require 'neography'
+
+#set up the Neo4j connection default client
+@neo = Neography::Rest.new
+
+#insert some data
+@neo.execute_query("create  ({name:'Hello'})-[:CRUEL]->({name:'World'})")
+
+#retrieve some data
+@neo.execute_query("match (s)-[r]->(e) return s.name as start, type(r), e.name as end")['data'].each do |row|
+	puts "result: #{row[0]} #{row[1]} #{row[2]}"
+end
+----
+
+And now, executing the file with
+
+[source, bash]
+----
+ruby hello.rb
+----
+
+Results in an output of
+
+[source]
+----
+result: Hello CRUEL World
+----
+
+
+Here you go, Joel!
+
+/peter
+
+
+
