@@ -10,7 +10,7 @@ brew install neo4j && neo4j start
 open http://localhost:7474/
 ----
 
-Secondly, just make a new directory for the project with a file `hello.rb` for our script. We are going to use Max DeMarzi's nice https://github.com/maxdemarzi/neography[Neography] library, currently probably the best maintained Neo4j driver for Ruby.
+Secondly, just make a new directory for the project with a file `hello.rb` for our script. We are going to use https://twitter.com/maxdemarzi[Max DeMarzi]'s nice https://github.com/maxdemarzi/neography[Neography] library, currently probably the best maintained Neo4j driver for Ruby.
 
 [source,bash]
 ----
