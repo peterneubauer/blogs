@@ -1,4 +1,5 @@
-require 'rubygems'
+require 'rubygems' 
+require 'bundler/setup'
 require 'neography'
 
 @neo = Neography::Rest.new

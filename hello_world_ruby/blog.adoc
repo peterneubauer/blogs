@@ -14,9 +14,9 @@ Secondly, just make a new directory for the project with a file `hello.rb` for o
 
 [source,bash]
 ----
-mkdir ruby_hello_world && cd ruby_hello_world
-gem install 'neography'
-touch hello.rb
+git clone https://github.com/peterneubauer/blogs.git
+cd blogs/hello_world_ruby
+bundle install
 ----
 
 I am only using http://docs.neo4j.org/refcard/2.0/[Cypher] to interact with neo4j through the https://github.com/maxdemarzi/neography/wiki/Transactions#start-of-content[transactional REST endpoint], so the interface becomes very uniform in parsing the underlying HTTP responses - basically arrays of data coming back from Neo4j.
@@ -39,7 +39,7 @@ require 'neography'
 end
 ----
 
-And now, executing the file with
+Executing the file with
 
 [source, bash]
 ----
