@@ -368,7 +368,7 @@ span.icon > [class^="icon-"], span.icon > [class*=" icon-"] { cursor: default; }
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Yesterday a friend of mine, <a href="https://twitter.com/tilljoel">@tilljoel</a>, asked me about how to get started with Neo4j and Ruby - so here is a small step-by-step guide to get the usual "Hello World" going.</p>
+<p>Yesterday a friend of mine, <a href="https://twitter.com/tilljoel">@tilljoel</a>, asked me about how to get started with <a href="http://neo4j.org">Neo4j</a> in ruby - so here is a small step-by-step guide to get the usual "Hello World" going.</p>
 </div>
 <div class="paragraph">
 <p>Firstly, I like to use Cypher as a query language and want to install the Neoj4 server as standard as possible on my OSX, via brew, and open the web interface in the browser for comfort:</p>
@@ -390,7 +390,7 @@ touch hello.rb</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>I am only using <a href="http://docs.neo4j.org/refcard/2.0/">Cypher</a> to interact with neo4j, so the interface becomes very uniform in parsing the underlying REST responses - basically arrays of data coming back from Neo4j.
+<p>I am only using <a href="http://docs.neo4j.org/refcard/2.0/">Cypher</a> to interact with neo4j through the <a href="https://github.com/maxdemarzi/neography/wiki/Transactions#start-of-content">transactional REST endpoint</a>, so the interface becomes very uniform in parsing the underlying HTTP responses - basically arrays of data coming back from Neo4j.
 Now, <code>hello.rb</code> looks something like this:</p>
 </div>
 <div class="listingblock">
@@ -402,11 +402,11 @@ require 'neography'
 @neo = Neography::Rest.new
 
 #insert some data
-@neo.execute_query("create  ({name:'Hello'})-[:CRUEL]-&gt;({name:'World'})")
+@neo.commit_transaction("create  ({name:'Hello'})-[:CRUEL]-&gt;({name:'World'})")
 
-#retriece some data
-@neo.execute_query("match (s)-[r]-&gt;(e) return s.name as start, type(r), e.name as end")['data'].each do |row|
-	puts "result: #{row[0]} #{row[1]} #{row[2]}"
+#retrieve some data
+@neo.commit_transaction("match (s)-[r]-&gt;(e) return s.name as start, type(r), e.name as end")['results'][0]['data'][0]['row'].each do |value|
+	puts "Got column: #{value}"
 end</code></pre>
 </div>
 </div>
@@ -423,7 +423,9 @@ end</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>result: Hello CRUEL World</code></pre>
+<pre class="highlight"><code>Got column: Hello
+Got column: CRUEL
+Got column: World</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -437,7 +439,7 @@ end</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2014-04-09 16:42:34 CEST
+Last updated 2014-04-15 11:03:31 CEST
 </div>
 </div>
 </body>

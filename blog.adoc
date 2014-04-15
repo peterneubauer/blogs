@@ -19,7 +19,7 @@ gem install 'neography'
 touch hello.rb
 ----
 
-I am only using http://docs.neo4j.org/refcard/2.0/[Cypher] to interact with neo4j, so the interface becomes very uniform in parsing the underlying REST responses - basically arrays of data coming back from Neo4j.
+I am only using http://docs.neo4j.org/refcard/2.0/[Cypher] to interact with neo4j through the https://github.com/maxdemarzi/neography/wiki/Transactions#start-of-content[transactional REST endpoint], so the interface becomes very uniform in parsing the underlying HTTP responses - basically arrays of data coming back from Neo4j.
 Now, `hello.rb` looks something like this:
 
 [source, ruby]
@@ -31,11 +31,11 @@ require 'neography'
 @neo = Neography::Rest.new
 
 #insert some data
-@neo.execute_query("create  ({name:'Hello'})-[:CRUEL]->({name:'World'})")
+@neo.commit_transaction("create  ({name:'Hello'})-[:CRUEL]->({name:'World'})")
 
 #retrieve some data
-@neo.execute_query("match (s)-[r]->(e) return s.name as start, type(r), e.name as end")['data'].each do |row|
-	puts "result: #{row[0]} #{row[1]} #{row[2]}"
+@neo.commit_transaction("match (s)-[r]->(e) return s.name as start, type(r), e.name as end")['results'][0]['data'][0]['row'].each do |value|
+	puts "Got column: #{value}"
 end
 ----
 
@@ -50,7 +50,9 @@ Results in an output of
 
 [source]
 ----
-result: Hello CRUEL World
+Got column: Hello
+Got column: CRUEL
+Got column: World
 ----
 
 
