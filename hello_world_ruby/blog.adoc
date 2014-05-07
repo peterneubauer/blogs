@@ -57,6 +57,7 @@ Got column: World
 
 
 Here you go, Joel! The code for this blog is available https://github.com/peterneubauer/blogs/blob/master/hello_world_ruby/[here at Github].
+If you can make it even easier, please give me a pull request and I promise to merge it :)
 
 /peter
 
