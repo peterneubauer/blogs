@@ -26,7 +26,8 @@ Ok, seems to work! Now on to adding the downloaded Neo4j JDBC driver to Squirrel
 
 image::img/jdbc-driver.png[]
 
-With that, I can just connect to my `http://localhost:7474` Neo4j URL without any authentication (you can add that later)
+With that, I can just connect to my `http://localhost:7474` Neo4j URL without any authentication (you can add that later).
+Now, let's take the same query from the Neo4j Browser and execute it through SquirrelSQL:
 
 image::img/squirrel-result.png[]
 
