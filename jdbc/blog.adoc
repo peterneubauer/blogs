@@ -1,6 +1,9 @@
-= The 10 min Neo4j/JDBC setup
+= The 10 min Neo4j JDBC setup
 
 Hi all,
+
+Even if http://neo4j.org[Neo4j] is all about graphs, JDBC is a very handy way to connect to a datastore, especially since there
+is a lot of tooling and connectors written around it in the Business Intelligence, Data Migration and ETL world.
 
 Following up on our http://neo4j.com/blog/cypher-jdbc-tools-testing-results/[blog post on JDBC tools for Neo4j], I just wanted to check that
  things are still working with the recent Neo4j versions. Actually, things are even better now!
