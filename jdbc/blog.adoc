@@ -5,12 +5,12 @@ Hi all,
 Even if http://neo4j.org[Neo4j] is all about graphs, JDBC is a very handy way to connect to a datastore, especially since there
 is a lot of tooling and connectors written around it in the Business Intelligence, Data Migration and ETL world.
 
-Following up on our http://neo4j.com/blog/cypher-jdbc-tools-testing-results/[blog post on JDBC tools for Neo4j], I just wanted to check that
- things are still working with the recent Neo4j versions. Actually, things are even better now!
+Following up on our http://neo4j.com/blog/cypher-jdbc-tools-testing-results/[blog post on JDBC tools for Neo4j], I just wanted to give you an update
+ on the recent Neo4j versions. Actually, things are even better now!
 
 To start with, I decided to test the standard http://squirrel-sql.sourceforge.net/#installation[SquirrelSQL OSX installation], giving me an empty
-insatllation. Now, in order to connect to neo4j, I built the Neo4j JDBC driver https://github.com/neo4j-contrib/neo4j-jdbc[from source], but you can just
-download the JDBC driver http://dist.neo4j.org/neo4j-jdbc/neo4j-jdbc-2.0.1-SNAPSHOT-jar-with-dependencies.jar[here].
+installation. Now, in order to connect to neo4j, I built the Neo4j JDBC driver https://github.com/neo4j-contrib/neo4j-jdbc[from source], but you can just
+download the JDBC driver  http://m2.neo4j.org/content/repositories/releases/org/neo4j/neo4j-jdbc/[here].
 
 Next step is to install Neo4j. On my OSX machine, I simply do
 
