@@ -1,0 +1,11 @@
+= A minimum viable JDBC - interaction with Neo4j
+
+With http://neo4j.org/download[Neo4j 2.1] being released, I want to test out how easy it is to interact with the database
+purely by means of "standard" database means. That means that communication should go via JDBC, and data import should use
+no custom code and an easy data format - CSV.
+
+In Neo4j 2.1, a very interesting new feature is the batch-insertion from text files via the http://docs.neo4j.org/chunked/stable/query-load-csv.html[`LOAD CSV FROM`]
+Cypher construct. This might seems like a small improvement, but behind the scenes the infrastrcuture to import bigger amounts of data
+has been rewritten from the ground up with the promise to transparently not only to be flexible, but also to appraoch the performance
+that until now only the Neo4j BatchInserter could devliver, while keeping all transactional goodies intact.
+
