@@ -88,3 +88,5 @@ for (String name : names) {
 ----
 
 Inserting `Emil` and `Michael` as contributors to the previously created `Neo4j` node.
+
+image::graph.png[]
