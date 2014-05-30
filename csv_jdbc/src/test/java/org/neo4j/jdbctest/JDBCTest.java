@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.neo4j.helpers.collection.MapUtil;
 
 import java.sql.*;
+import java.util.HashMap;
 import java.util.Map;
 
 import static junit.framework.TestCase.assertEquals;
@@ -25,7 +26,9 @@ public class JDBCTest {
             stmt.execute("match (n) optional match (n)-[r]-() delete n, r");
 
             //the property map for the "neo4j" node
-            final Map<String, String> neo4jProperties = MapUtil.stringMap("name", "neo4j");
+            final Map neo4jProperties = new HashMap();
+            neo4jProperties.put("name", "neo4j");
+            neo4jProperties.put("inception", 2007);
 
             //insert some one-time data
             final PreparedStatement insertNeo4j = con.prepareStatement("create (:Project {1})");
