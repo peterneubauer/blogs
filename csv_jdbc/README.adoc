@@ -90,3 +90,22 @@ for (String name : names) {
 Inserting `Emil` and `Michael` as contributors to the previously created `Neo4j` node.
 
 image::graph.png[]
+
+Just to assert that things are right, I tested a JDBC read operation and counted the results like this:
+
+[source,java]
+----
+//some read query
+ResultSet rs = stmt.executeQuery("match (n)-[:CONTRIBUTES_TO]->(:Project) return n.name as name");
+int count = 0;
+while (rs.next()) {
+    System.out.println(rs.getString("name"));
+    count++;
+}
+
+assertEquals(2, count);
+----
+
+Voilá, seems we have two Neo4j contributors in the database!
+
+/peter
