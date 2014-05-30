@@ -1,8 +1,12 @@
+package org.neo4j.jdbctest;
+
 import org.junit.Test;
 import org.neo4j.helpers.collection.MapUtil;
 
 import java.sql.*;
 import java.util.Map;
+
+import static junit.framework.TestCase.assertEquals;
 
 public class JDBCTest {
 
@@ -42,9 +46,13 @@ public class JDBCTest {
 
             //some read query
             ResultSet rs = stmt.executeQuery("match (n)-[:CONTRIBUTES_TO]->(:Project) return n.name as name");
+            int count = 0;
             while (rs.next()) {
                 System.out.println(rs.getString("name"));
+                count++;
             }
+
+            assertEquals(2, count);
         } catch (Exception e) {
             e.printStackTrace();
         }

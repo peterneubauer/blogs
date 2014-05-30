@@ -1,7 +1,7 @@
 = A minimum viable JDBC - interaction with Neo4j
 
 With http://neo4j.org/download[Neo4j 2.1] being released, I want to test out how easy it is to interact with the database
-purely by means of "standard" database means. That means that communication should go via JDBC, and data import should use
+purely by means of "standard" Java database APIs. That means that communication should go via JDBC, and data import should use
 the standard approach - prepared statements.
 
 For this purpose, the maven project in https://github.com/peterneubauer/blogs/blob/master/csv_jdbc/pom.xml[`pom.xml`] is only minimal to pull in the neo4j and neo4j-jdbc driver artifacts:
@@ -19,3 +19,13 @@ For this purpose, the maven project in https://github.com/peterneubauer/blogs/bl
     <version>2.1.0-SNAPSHOT</version>
 </dependency>
 ----
+
+After adding another dependency on JUnit, it is time to write my test class. First, I loaded the driver normally and opened
+a connection to my local Neo4j server that I had installed and started on my OSX with
+
+[source,bash]
+---
+brew install neo4j && neo4j start
+---
+
+
