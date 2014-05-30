@@ -20,7 +20,7 @@ For this purpose, the maven project in https://github.com/peterneubauer/blogs/bl
 </dependency>
 ----
 
-After adding another dependency on JUnit, it is time to write my test class. First, I loaded the driver normally and opened
+After adding another dependency on JUnit, it is time to write my https://github.com/peterneubauer/blogs/blob/master/csv_jdbc/src/test/java/org/neo4j/jdbctest/JDBCTest.java[test class]. First, I loaded the driver normally and opened
 a connection to my local Neo4j server that I had installed and started on my OSX with
 
 [source,bash]
