@@ -4,7 +4,7 @@ With http://neo4j.org/download[Neo4j 2.1] being released, I want to test out how
 purely by means of "standard" database means. That means that communication should go via JDBC, and data import should use
 the standard approach - prepared statements.
 
-For this purpose, the maven project in `pom.xml` is only minimal to pull in the neo4j and neo4j-jdbc driver artifacts:
+For this purpose, the maven project in https://github.com/peterneubauer/blogs/blob/master/csv_jdbc/pom.xml[`pom.xml`] is only minimal to pull in the neo4j and neo4j-jdbc driver artifacts:
 
 [source,xml]
 ----
