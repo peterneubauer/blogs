@@ -109,3 +109,5 @@ assertEquals(2, count);
 Voilá, seems we have two Neo4j contributors in the database!
 
 /peter
+
+p.s. the code for this test class is part of this Github project, see https://github.com/peterneubauer/blogs/blob/master/csv_jdbc/src/test/java/org/neo4j/jdbctest/JDBCTest.java[JDBCTest.java].
