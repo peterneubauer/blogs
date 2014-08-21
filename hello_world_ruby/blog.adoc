@@ -2,7 +2,7 @@
 
 Yesterday a friend of mine, https://twitter.com/tilljoel[@tilljoel], asked me about how to get started with http://neo4j.org[Neo4j] in ruby - so here is a small step-by-step guide to get the usual "Hello World" going.
 
-Firstly, I like to use Cypher as a query language and want to install the Neoj4 server as standard as possible on my OSX, via brew, and open the web interface in the browser for comfort:
+Firstly, I like to use Cypher as a query language and want to install the Neo4j server as standard as possible on my OSX, via brew, and open the web interface in the browser for comfort:
 
 [source, bash]
 ----
