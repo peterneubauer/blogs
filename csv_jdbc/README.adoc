@@ -76,13 +76,16 @@ Now, in the Cypher `MATCH` clauses, you can reuse parameter maps through their v
 ----
 //some repetitive query as a prepared statement reusing the neo4j values in the parameters map
 final PreparedStatement insertPeople = con.prepareStatement("" +
-        "MATCH (neo4j:Project{name:{0}.name}) " +
-        "CREATE ({name:{1}})-[:CONTRIBUTES_TO]->(neo4j)");
-insertPeople.setObject(0, neo4jProperties);
+        "MATCH (neo4j:Project{name:{1}.name}) " +
+        "CREATE ({name:{2}})-[:CONTRIBUTES_TO]->(neo4j)");
+
+// just for demo purposes pass in the map
+insertPeople.setObject(1, neo4jProperties);
+
 //some bulk-data, possibly read from files or other data sources
 String[] names = {"Michael", "Emil"};
 for (String name : names) {
-    insertPeople.setString(1, name);
+    insertPeople.setString(2, name);
     insertPeople.execute();
 }
 ----
